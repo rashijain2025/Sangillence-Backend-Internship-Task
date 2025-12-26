@@ -1,13 +1,13 @@
 {
   "name": "sangillence-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "Sangillence Backend API",
+  "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js"
   },
-  "keywords": [],
+  "keywords": ["sangillence", "backend", "api"],
   "author": "",
   "license": "ISC",
   "dependencies": {

@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const { initializeDatabase } = require('./config/db');
+
 
 const app = express();
 
@@ -16,7 +18,20 @@ app.get("/", (req, res) => {
   res.send("Sangillence Backend Running ");
 });
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+const PORT = process.env.PORT || 10000;
+async function startServer() {
+  try {
+    // Initialize database first
+    await initializeDatabase();
+    
+    // Then start the server
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('Failed to start server:', error);
+    process.exit(1);
+  }
+}
+
+startServer();
